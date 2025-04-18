@@ -1,0 +1,494 @@
+export const dataSetOne = {
+  id: "1",
+  name: "root",
+  type: "directory",
+  modified: "2023-11-01T00:00:00Z",
+  permissions: "rwx",
+  children: [
+    {
+      id: "2",
+      name: "Level_1",
+      type: "directory",
+      modified: "2023-11-01T00:01:00Z",
+      permissions: "rwx",
+      children: [
+        {
+          id: "3",
+          name: "Level_1_file.txt",
+          type: "file",
+          size: "1KB",
+          modified: "2023-11-01T00:01:30Z",
+          permissions: "rw",
+        },
+        {
+          id: "4",
+          name: "Level_2",
+          type: "directory",
+          modified: "2023-11-01T00:02:00Z",
+          permissions: "rwx",
+          children: [
+            {
+              id: "5",
+              name: "Level_2_file.txt",
+              type: "file",
+              size: "1KB",
+              modified: "2023-11-01T00:02:30Z",
+              permissions: "rw",
+            },
+            {
+              id: "6",
+              name: "Level_3",
+              type: "directory",
+              modified: "2023-11-01T00:03:00Z",
+              permissions: "rwx",
+              children: [
+                {
+                  id: "7",
+                  name: "Level_3_file.txt",
+                  type: "file",
+                  size: "1KB",
+                  modified: "2023-11-01T00:03:30Z",
+                  permissions: "rw",
+                },
+                {
+                  id: "8",
+                  name: "Level_4",
+                  type: "directory",
+                  modified: "2023-11-01T00:04:00Z",
+                  permissions: "rwx",
+                  children: [
+                    {
+                      id: "9",
+                      name: "Level_4_file.txt",
+                      type: "file",
+                      size: "1KB",
+                      modified: "2023-11-01T00:04:30Z",
+                      permissions: "rw",
+                    },
+                    {
+                      id: "10",
+                      name: "Level_5",
+                      type: "directory",
+                      modified: "2023-11-01T00:05:00Z",
+                      permissions: "rwx",
+                      children: [
+                        {
+                          id: "11",
+                          name: "Level_5_file.txt",
+                          type: "file",
+                          size: "1KB",
+                          modified: "2023-11-01T00:05:30Z",
+                          permissions: "rw",
+                        },
+                        {
+                          id: "12",
+                          name: "Level_6",
+                          type: "directory",
+                          modified: "2023-11-01T00:06:00Z",
+                          permissions: "rwx",
+                          children: [
+                            {
+                              id: "13",
+                              name: "Level_6_file.txt",
+                              type: "file",
+                              size: "1KB",
+                              modified: "2023-11-01T00:06:30Z",
+                              permissions: "rw",
+                            },
+                            {
+                              id: "14",
+                              name: "Level_7",
+                              type: "directory",
+                              modified: "2023-11-01T00:07:00Z",
+                              permissions: "rwx",
+                              children: [
+                                {
+                                  id: "15",
+                                  name: "Level_7_file.txt",
+                                  type: "file",
+                                  size: "1KB",
+                                  modified: "2023-11-01T00:07:30Z",
+                                  permissions: "rw",
+                                },
+                                {
+                                  id: "16",
+                                  name: "Level_8",
+                                  type: "directory",
+                                  modified: "2023-11-01T00:08:00Z",
+                                  permissions: "rwx",
+                                  children: [
+                                    {
+                                      id: "17",
+                                      name: "Level_8_file.txt",
+                                      type: "file",
+                                      size: "1KB",
+                                      modified: "2023-11-01T00:08:30Z",
+                                      permissions: "rw",
+                                    },
+                                    {
+                                      id: "18",
+                                      name: "Level_9",
+                                      type: "directory",
+                                      modified: "2023-11-01T00:09:00Z",
+                                      permissions: "rwx",
+                                      children: [
+                                        {
+                                          id: "19",
+                                          name: "Level_9_file.txt",
+                                          type: "file",
+                                          size: "1KB",
+                                          modified: "2023-11-01T00:09:30Z",
+                                          permissions: "rw",
+                                        },
+                                        {
+                                          id: "20",
+                                          name: "Level_10",
+                                          type: "directory",
+                                          modified: "2023-11-01T00:10:00Z",
+                                          permissions: "rwx",
+                                          children: [
+                                            {
+                                              id: "21",
+                                              name: "Level_10_file.txt",
+                                              type: "file",
+                                              size: "1KB",
+                                              modified: "2023-11-01T00:10:30Z",
+                                              permissions: "rw",
+                                            },
+                                            {
+                                              id: "22",
+                                              name: "Level_11",
+                                              type: "directory",
+                                              modified: "2023-11-01T00:11:00Z",
+                                              permissions: "rwx",
+                                              children: [
+                                                {
+                                                  id: "23",
+                                                  name: "Level_11_file.txt",
+                                                  type: "file",
+                                                  size: "1KB",
+                                                  modified:
+                                                    "2023-11-01T00:11:30Z",
+                                                  permissions: "rw",
+                                                },
+                                                {
+                                                  id: "24",
+                                                  name: "Level_12",
+                                                  type: "directory",
+                                                  modified:
+                                                    "2023-11-01T00:12:00Z",
+                                                  permissions: "rwx",
+                                                  children: [
+                                                    {
+                                                      id: "25",
+                                                      name: "Level_12_file.txt",
+                                                      type: "file",
+                                                      size: "1KB",
+                                                      modified:
+                                                        "2023-11-01T00:12:30Z",
+                                                      permissions: "rw",
+                                                    },
+                                                    {
+                                                      id: "26",
+                                                      name: "Level_13",
+                                                      type: "directory",
+                                                      modified:
+                                                        "2023-11-01T00:13:00Z",
+                                                      permissions: "rwx",
+                                                      children: [
+                                                        {
+                                                          id: "27",
+                                                          name: "Level_13_file.txt",
+                                                          type: "file",
+                                                          size: "1KB",
+                                                          modified:
+                                                            "2023-11-01T00:13:30Z",
+                                                          permissions: "rw",
+                                                        },
+                                                        {
+                                                          id: "28",
+                                                          name: "Level_14",
+                                                          type: "directory",
+                                                          modified:
+                                                            "2023-11-01T00:14:00Z",
+                                                          permissions: "rwx",
+                                                          children: [
+                                                            {
+                                                              id: "29",
+                                                              name: "Level_14_file.txt",
+                                                              type: "file",
+                                                              size: "1KB",
+                                                              modified:
+                                                                "2023-11-01T00:14:30Z",
+                                                              permissions: "rw",
+                                                            },
+                                                            {
+                                                              id: "30",
+                                                              name: "Level_15",
+                                                              type: "directory",
+                                                              modified:
+                                                                "2023-11-01T00:15:00Z",
+                                                              permissions:
+                                                                "rwx",
+                                                              children: [
+                                                                {
+                                                                  id: "31",
+                                                                  name: "Level_15_file.txt",
+                                                                  type: "file",
+                                                                  size: "1KB",
+                                                                  modified:
+                                                                    "2023-11-01T00:15:30Z",
+                                                                  permissions:
+                                                                    "rw",
+                                                                },
+                                                                {
+                                                                  id: "32",
+                                                                  name: "Level_16",
+                                                                  type: "directory",
+                                                                  modified:
+                                                                    "2023-11-01T00:16:00Z",
+                                                                  permissions:
+                                                                    "rwx",
+                                                                  children: [
+                                                                    {
+                                                                      id: "33",
+                                                                      name: "Level_16_file.txt",
+                                                                      type: "file",
+                                                                      size: "1KB",
+                                                                      modified:
+                                                                        "2023-11-01T00:16:30Z",
+                                                                      permissions:
+                                                                        "rw",
+                                                                    },
+                                                                    {
+                                                                      id: "34",
+                                                                      name: "Level_17",
+                                                                      type: "directory",
+                                                                      modified:
+                                                                        "2023-11-01T00:17:00Z",
+                                                                      permissions:
+                                                                        "rwx",
+                                                                      children:
+                                                                        [
+                                                                          {
+                                                                            id: "35",
+                                                                            name: "Level_17_file.txt",
+                                                                            type: "file",
+                                                                            size: "1KB",
+                                                                            modified:
+                                                                              "2023-11-01T00:17:30Z",
+                                                                            permissions:
+                                                                              "rw",
+                                                                          },
+                                                                          {
+                                                                            id: "36",
+                                                                            name: "Level_18",
+                                                                            type: "directory",
+                                                                            modified:
+                                                                              "2023-11-01T00:18:00Z",
+                                                                            permissions:
+                                                                              "rwx",
+                                                                            children:
+                                                                              [
+                                                                                {
+                                                                                  id: "37",
+                                                                                  name: "Level_18_file.txt",
+                                                                                  type: "file",
+                                                                                  size: "1KB",
+                                                                                  modified:
+                                                                                    "2023-11-01T00:18:30Z",
+                                                                                  permissions:
+                                                                                    "rw",
+                                                                                },
+                                                                                {
+                                                                                  id: "38",
+                                                                                  name: "Level_19",
+                                                                                  type: "directory",
+                                                                                  modified:
+                                                                                    "2023-11-01T00:19:00Z",
+                                                                                  permissions:
+                                                                                    "rwx",
+                                                                                  children:
+                                                                                    [
+                                                                                      {
+                                                                                        id: "39",
+                                                                                        name: "Level_19_file.txt",
+                                                                                        type: "file",
+                                                                                        size: "1KB",
+                                                                                        modified:
+                                                                                          "2023-11-01T00:19:30Z",
+                                                                                        permissions:
+                                                                                          "rw",
+                                                                                      },
+                                                                                      {
+                                                                                        id: "40",
+                                                                                        name: "Level_20",
+                                                                                        type: "directory",
+                                                                                        modified:
+                                                                                          "2023-11-01T00:20:00Z",
+                                                                                        permissions:
+                                                                                          "rwx",
+                                                                                        children:
+                                                                                          [
+                                                                                            {
+                                                                                              id: "41",
+                                                                                              name: "Level_20_file.txt",
+                                                                                              type: "file",
+                                                                                              size: "1KB",
+                                                                                              modified:
+                                                                                                "2023-11-01T00:20:30Z",
+                                                                                              permissions:
+                                                                                                "rw",
+                                                                                            },
+                                                                                            {
+                                                                                              id: "42",
+                                                                                              name: "Level_21",
+                                                                                              type: "directory",
+                                                                                              modified:
+                                                                                                "2023-11-01T00:21:00Z",
+                                                                                              permissions:
+                                                                                                "rwx",
+                                                                                              children:
+                                                                                                [
+                                                                                                  {
+                                                                                                    id: "43",
+                                                                                                    name: "Level_21_file.txt",
+                                                                                                    type: "file",
+                                                                                                    size: "1KB",
+                                                                                                    modified:
+                                                                                                      "2023-11-01T00:21:30Z",
+                                                                                                    permissions:
+                                                                                                      "rw",
+                                                                                                  },
+                                                                                                  {
+                                                                                                    id: "44",
+                                                                                                    name: "Level_22",
+                                                                                                    type: "directory",
+                                                                                                    modified:
+                                                                                                      "2023-11-01T00:22:00Z",
+                                                                                                    permissions:
+                                                                                                      "rwx",
+                                                                                                    children:
+                                                                                                      [
+                                                                                                        {
+                                                                                                          id: "45",
+                                                                                                          name: "Level_22_file.txt",
+                                                                                                          type: "file",
+                                                                                                          size: "1KB",
+                                                                                                          modified:
+                                                                                                            "2023-11-01T00:22:30Z",
+                                                                                                          permissions:
+                                                                                                            "rw",
+                                                                                                        },
+                                                                                                        {
+                                                                                                          id: "46",
+                                                                                                          name: "Level_23",
+                                                                                                          type: "directory",
+                                                                                                          modified:
+                                                                                                            "2023-11-01T00:23:00Z",
+                                                                                                          permissions:
+                                                                                                            "rwx",
+                                                                                                          children:
+                                                                                                            [
+                                                                                                              {
+                                                                                                                id: "47",
+                                                                                                                name: "Level_23_file.txt",
+                                                                                                                type: "file",
+                                                                                                                size: "1KB",
+                                                                                                                modified:
+                                                                                                                  "2023-11-01T00:23:30Z",
+                                                                                                                permissions:
+                                                                                                                  "rw",
+                                                                                                              },
+                                                                                                              {
+                                                                                                                id: "48",
+                                                                                                                name: "Level_24",
+                                                                                                                type: "directory",
+                                                                                                                modified:
+                                                                                                                  "2023-11-01T00:24:00Z",
+                                                                                                                permissions:
+                                                                                                                  "rwx",
+                                                                                                                children:
+                                                                                                                  [
+                                                                                                                    {
+                                                                                                                      id: "49",
+                                                                                                                      name: "Level_24_file.txt",
+                                                                                                                      type: "file",
+                                                                                                                      size: "1KB",
+                                                                                                                      modified:
+                                                                                                                        "2023-11-01T00:24:30Z",
+                                                                                                                      permissions:
+                                                                                                                        "rw",
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                      id: "50",
+                                                                                                                      name: "Level_25",
+                                                                                                                      type: "directory",
+                                                                                                                      modified:
+                                                                                                                        "2023-11-01T00:25:00Z",
+                                                                                                                      permissions:
+                                                                                                                        "rwx",
+                                                                                                                      children:
+                                                                                                                        [
+                                                                                                                          {
+                                                                                                                            id: "51",
+                                                                                                                            name: "Level_25_file.txt",
+                                                                                                                            type: "file",
+                                                                                                                            size: "1KB",
+                                                                                                                            modified:
+                                                                                                                              "2023-11-01T00:25:30Z",
+                                                                                                                            permissions:
+                                                                                                                              "rw",
+                                                                                                                          },
+                                                                                                                        ],
+                                                                                                                    },
+                                                                                                                  ],
+                                                                                                              },
+                                                                                                            ],
+                                                                                                        },
+                                                                                                      ],
+                                                                                                  },
+                                                                                                ],
+                                                                                            },
+                                                                                          ],
+                                                                                      },
+                                                                                    ],
+                                                                                },
+                                                                              ],
+                                                                          },
+                                                                        ],
+                                                                    },
+                                                                  ],
+                                                                },
+                                                              ],
+                                                            },
+                                                          ],
+                                                        },
+                                                      ],
+                                                    },
+                                                  ],
+                                                },
+                                              ],
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};

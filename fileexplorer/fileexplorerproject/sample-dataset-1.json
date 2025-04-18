@@ -1,0 +1,64 @@
+{
+  "name": "root",
+  "type": "directory",
+  "children": [
+    {
+      "name": "Documents",
+      "type": "directory",
+      "children": [
+        { "name": "Resume.pdf", "type": "file" },
+        { "name": "CoverLetter.docx", "type": "file" },
+        { "name": "Notes.txt", "type": "file" }
+      ]
+    },
+    {
+      "name": "Photos",
+      "type": "directory",
+      "children": [
+        { "name": "vacation.jpg", "type": "file" },
+        { "name": "family.png", "type": "file" },
+        {
+          "name": "Events",
+          "type": "directory",
+          "children": [
+            { "name": "wedding.png", "type": "file" },
+            { "name": "birthday.jpg", "type": "file" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "type": "directory",
+      "children": [
+        {
+          "name": "Project1",
+          "type": "directory",
+          "children": [
+            { "name": "index.html", "type": "file" },
+            { "name": "app.js", "type": "file" },
+            { "name": "styles.css", "type": "file" }
+          ]
+        },
+        {
+          "name": "Project2",
+          "type": "directory",
+          "children": [
+            { "name": "main.py", "type": "file" },
+            { "name": "README.md", "type": "file" },
+            { "name": "requirements.txt", "type": "file" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Downloads",
+      "type": "directory",
+      "children": [
+        { "name": "setup.exe", "type": "file" },
+        { "name": "movie.mkv", "type": "file" },
+        { "name": "ebook.pdf", "type": "file" }
+      ]
+    }
+  ]
+}

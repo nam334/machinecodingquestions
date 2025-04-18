@@ -1,0 +1,399 @@
+{
+  "id": "1",
+  "name": "root",
+  "type": "directory",
+  "modified": "2023-11-01T12:00:00Z",
+  "permissions": "rwx",
+  "children": [
+    {
+      "id": "2",
+      "name": "Users",
+      "type": "directory",
+      "modified": "2023-11-01T12:10:00Z",
+      "permissions": "rwx",
+      "children": [
+        {
+          "id": "3",
+          "name": "alice",
+          "type": "directory",
+          "modified": "2023-11-01T12:15:00Z",
+          "permissions": "rwx",
+          "children": [
+            {
+              "id": "4",
+              "name": "Documents",
+              "type": "directory",
+              "modified": "2023-11-01T12:20:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "5",
+                  "name": "Resume.docx",
+                  "type": "file",
+                  "size": "124KB",
+                  "modified": "2023-10-01T09:30:00Z",
+                  "permissions": "rw"
+                },
+                {
+                  "id": "6",
+                  "name": "ProjectProposal.pdf",
+                  "type": "file",
+                  "size": "2MB",
+                  "modified": "2023-09-21T08:15:00Z",
+                  "permissions": "r"
+                },
+                {
+                  "id": "7",
+                  "name": "Taxes",
+                  "type": "directory",
+                  "modified": "2023-08-10T11:00:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "8",
+                      "name": "2022_TaxReturn.pdf",
+                      "type": "file",
+                      "size": "850KB",
+                      "modified": "2023-08-11T11:30:00Z",
+                      "permissions": "r"
+                    },
+                    {
+                      "id": "9",
+                      "name": "2021_TaxReturn.pdf",
+                      "type": "file",
+                      "size": "800KB",
+                      "modified": "2023-08-10T11:05:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "10",
+              "name": "Pictures",
+              "type": "directory",
+              "modified": "2023-11-01T12:25:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "11",
+                  "name": "Vacation",
+                  "type": "directory",
+                  "modified": "2023-06-15T12:30:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "12",
+                      "name": "beach.png",
+                      "type": "file",
+                      "size": "3MB",
+                      "modified": "2023-06-14T11:00:00Z",
+                      "permissions": "r"
+                    },
+                    {
+                      "id": "13",
+                      "name": "mountains.jpg",
+                      "type": "file",
+                      "size": "4MB",
+                      "modified": "2023-06-14T11:05:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                },
+                {
+                  "id": "14",
+                  "name": "Family",
+                  "type": "directory",
+                  "modified": "2023-07-01T12:00:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "15",
+                      "name": "birthday.jpg",
+                      "type": "file",
+                      "size": "2.5MB",
+                      "modified": "2023-07-01T10:00:00Z",
+                      "permissions": "r"
+                    },
+                    {
+                      "id": "16",
+                      "name": "anniversary.png",
+                      "type": "file",
+                      "size": "2MB",
+                      "modified": "2023-07-02T10:30:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "17",
+              "name": "Projects",
+              "type": "directory",
+              "modified": "2023-11-01T12:30:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "18",
+                  "name": "WebApp",
+                  "type": "directory",
+                  "modified": "2023-10-15T14:00:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "19",
+                      "name": "index.html",
+                      "type": "file",
+                      "size": "10KB",
+                      "modified": "2023-10-15T14:05:00Z",
+                      "permissions": "r"
+                    },
+                    {
+                      "id": "20",
+                      "name": "app.js",
+                      "type": "file",
+                      "size": "50KB",
+                      "modified": "2023-10-15T14:05:00Z",
+                      "permissions": "r"
+                    },
+                    {
+                      "id": "21",
+                      "name": "styles.css",
+                      "type": "file",
+                      "size": "20KB",
+                      "modified": "2023-10-15T14:05:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                },
+                {
+                  "id": "22",
+                  "name": "DataAnalysis",
+                  "type": "directory",
+                  "modified": "2023-09-15T08:00:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "23",
+                      "name": "analysis.ipynb",
+                      "type": "file",
+                      "size": "500KB",
+                      "modified": "2023-09-15T08:05:00Z",
+                      "permissions": "r"
+                    },
+                    {
+                      "id": "24",
+                      "name": "dataset.csv",
+                      "type": "file",
+                      "size": "10MB",
+                      "modified": "2023-09-15T08:05:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "25",
+          "name": "bob",
+          "type": "directory",
+          "modified": "2023-11-01T12:16:00Z",
+          "permissions": "rwx",
+          "children": [
+            {
+              "id": "26",
+              "name": "Documents",
+              "type": "directory",
+              "modified": "2023-11-01T12:20:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "27",
+                  "name": "Budget.xlsx",
+                  "type": "file",
+                  "size": "250KB",
+                  "modified": "2023-08-01T09:00:00Z",
+                  "permissions": "r"
+                },
+                {
+                  "id": "28",
+                  "name": "MeetingNotes.docx",
+                  "type": "file",
+                  "size": "150KB",
+                  "modified": "2023-08-05T10:15:00Z",
+                  "permissions": "rw"
+                },
+                {
+                  "id": "29",
+                  "name": "Legal",
+                  "type": "directory",
+                  "modified": "2023-08-06T10:00:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "30",
+                      "name": "Contract.pdf",
+                      "type": "file",
+                      "size": "300KB",
+                      "modified": "2023-08-06T10:05:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "31",
+              "name": "Music",
+              "type": "directory",
+              "modified": "2023-10-01T13:00:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "32",
+                  "name": "Rock",
+                  "type": "directory",
+                  "modified": "2023-10-01T13:15:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "33",
+                      "name": "song1.mp3",
+                      "type": "file",
+                      "size": "5MB",
+                      "modified": "2023-10-01T13:20:00Z",
+                      "permissions": "r"
+                    },
+                    {
+                      "id": "34",
+                      "name": "song2.mp3",
+                      "type": "file",
+                      "size": "6MB",
+                      "modified": "2023-10-01T13:22:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                },
+                {
+                  "id": "35",
+                  "name": "Jazz",
+                  "type": "directory",
+                  "modified": "2023-10-02T13:00:00Z",
+                  "permissions": "rwx",
+                  "children": [
+                    {
+                      "id": "36",
+                      "name": "smooth.mp3",
+                      "type": "file",
+                      "size": "4MB",
+                      "modified": "2023-10-02T13:05:00Z",
+                      "permissions": "r"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "name": "System",
+      "type": "directory",
+      "modified": "2023-11-01T12:40:00Z",
+      "permissions": "rwx",
+      "children": [
+        {
+          "id": "38",
+          "name": "Windows",
+          "type": "directory",
+          "modified": "2023-11-01T12:45:00Z",
+          "permissions": "rwx",
+          "children": [
+            {
+              "id": "39",
+              "name": "System32",
+              "type": "directory",
+              "modified": "2023-11-01T12:50:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "40",
+                  "name": "config.sys",
+                  "type": "file",
+                  "size": "5KB",
+                  "modified": "2023-11-01T12:55:00Z",
+                  "permissions": "r"
+                },
+                {
+                  "id": "41",
+                  "name": "kernel32.dll",
+                  "type": "file",
+                  "size": "2MB",
+                  "modified": "2023-11-01T13:00:00Z",
+                  "permissions": "r"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "42",
+          "name": "Program Files",
+          "type": "directory",
+          "modified": "2023-11-01T13:10:00Z",
+          "permissions": "rwx",
+          "children": [
+            {
+              "id": "43",
+              "name": "AppA",
+              "type": "directory",
+              "modified": "2023-10-25T14:00:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "44",
+                  "name": "appA.exe",
+                  "type": "file",
+                  "size": "15MB",
+                  "modified": "2023-10-25T14:05:00Z",
+                  "permissions": "r"
+                },
+                {
+                  "id": "45",
+                  "name": "config.ini",
+                  "type": "file",
+                  "size": "2KB",
+                  "modified": "2023-10-25T14:07:00Z",
+                  "permissions": "rw"
+                }
+              ]
+            },
+            {
+              "id": "46",
+              "name": "AppB",
+              "type": "directory",
+              "modified": "2023-11-01T13:20:00Z",
+              "permissions": "rwx",
+              "children": [
+                {
+                  "id": "47",
+                  "name": "appB.exe",
+                  "type": "file",
+                  "size": "25MB",
+                  "modified": "2023-11-01T13:25:00Z",
+                  "permissions": "r"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
