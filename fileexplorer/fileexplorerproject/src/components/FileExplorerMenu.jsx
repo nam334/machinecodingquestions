@@ -15,12 +15,24 @@ const FileExplorerMenu = ({
 }) => {
   const [toggle, setToggle] = useState(false);
   const [showInput, setShowInput] = useState(false);
-
   const [showEditInput, setEditInput] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const [loadedChildren, setLoadedChildren] = useState([]);
   const { name = "", type = "", id = "" } = dataSetOne || {};
+
   console.log(dataSetOne?.children?.length, toggle);
-  const toggleItems = () => setToggle((prev) => !prev);
+  const toggleItems = () => {
+    setToggle((prev) => !prev);
+
+    if (!toggle && !loadedChildren.length && dataSetOne?.children) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoadedChildren(dataSetOne?.children);
+        setLoading(false);
+      }, 500);
+    }
+  };
+
   const addItemHandler = () => {
     setShowInput(true);
   };
@@ -141,25 +153,28 @@ const FileExplorerMenu = ({
           </div>
         </>
       )}
-      {toggle > 0 ? (
-        <>
-          {dataSetOne?.children?.map((childItem) => (
-            <FileExplorerMenu
-              key={childItem.id}
-              dataSetOne={childItem}
-              setFileExplorerData={setFileExplorerData}
-              deleteItemHandler={deleteItemHandler}
-              addItem={addItem}
-              selectType={selectType}
-              setSelectType={setSelectType}
-              addValue={addValue}
-              setAddValue={setAddValue}
-              editSelectHandler={(id, name) => editSelectHandler(id, name)}
-              setEditValue={setEditValue}
-            />
-          ))}
-        </>
+
+      {toggle ? (
+        loading ? (
+          <span className="loadingText">Loading...</span>
+        ) : null
       ) : null}
+      {!loading &&
+        loadedChildren?.map((childItem) => (
+          <FileExplorerMenu
+            key={childItem.id}
+            dataSetOne={childItem}
+            setFileExplorerData={setFileExplorerData}
+            deleteItemHandler={deleteItemHandler}
+            addItem={addItem}
+            selectType={selectType}
+            setSelectType={setSelectType}
+            addValue={addValue}
+            setAddValue={setAddValue}
+            editSelectHandler={(id, name) => editSelectHandler(id, name)}
+            setEditValue={setEditValue}
+          />
+        ))}
     </>
   );
 };

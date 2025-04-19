@@ -141,3 +141,8 @@ button:focus-visible {
   background-color: #252526;
   padding: 1rem;
 }
+
+.loadingText {
+  color: white;
+  margin-left: 10px;
+}
