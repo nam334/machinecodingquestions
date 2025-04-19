@@ -27,6 +27,7 @@ body {
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  background-color: #1e1e1e;
 }
 
 h1 {
@@ -68,17 +69,18 @@ button:focus-visible {
 
 /* Components */
 .fileMenu {
-  width: 300px;
-  background-color: #201717;
+  width: 330px;
+  background-color: #252526;
   height: 100%;
-  padding: 1rem;
+  padding: 0.3rem;
+  border-left: 0.85rem solid #434242;
 }
 .fileMenuParentItem {
   background-color: #434242;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border-radius: 5px;
   color: white;
-  margin: 5px;
+  margin: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,4 +88,56 @@ button:focus-visible {
 .fa-angle-double-up,
 .fa-angle-double-down {
   cursor: pointer;
+}
+
+.addButton {
+  background: none;
+  border: none;
+  color: white;
+  padding: 2px;
+  margin-left: 10px;
+}
+
+.addItemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 1rem 0rem;
+}
+.editItemContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.editItemContainer .inputBox {
+  width: 200px;
+}
+.inputBox {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-left: 5px;
+}
+
+.addItemContainer {
+  color: white;
+}
+
+.buttonContainer button {
+  padding: 0.4rem;
+  margin-left: 5px;
+  font-size: 15px;
+}
+
+.editItemContainer button {
+  background: none;
+  padding: 0.4rem;
+  border: none;
+}
+
+.explorer {
+  color: white;
+  font-weight: 200;
+  font-size: 1rem;
+  background-color: #252526;
+  padding: 1rem;
 }
