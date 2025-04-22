@@ -12,9 +12,8 @@ const Home = () => {
     console.log("Original data is", fileExplorerData);
   }, [fileExplorerData]);
 
-  const addItem = () => {
-    let parentName = dataSetOne?.name,
-      itemname;
+  const addItem = (pid) => {
+    let itemname;
     if (selectType === "file") itemname = addValue + ".txt";
     const item = {
       id: uuidv4(),
@@ -24,9 +23,9 @@ const Home = () => {
     if (selectType === "directory") item.children = [];
     //make a copy
     const copyData = JSON.parse(JSON.stringify(fileExplorerData));
-    addToParent(copyData);
-    function addToParent(node) {
-      if (node.name === parentName) {
+    addToParent(copyData, pid);
+    function addToParent(node, pid) {
+      if (node.id === pid) {
         if (!node.children) node.children = [];
         node.children.push(item);
         return true;
@@ -34,7 +33,7 @@ const Home = () => {
       if (node.children) {
         for (let child of node.children) {
           if (child.type === "directory") {
-            if (addToParent(child)) return true;
+            if (addToParent(child, pid)) return true;
           }
         }
       }

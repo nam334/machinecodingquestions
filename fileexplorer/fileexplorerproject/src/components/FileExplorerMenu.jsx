@@ -21,20 +21,34 @@ const FileExplorerMenu = ({
   const { name = "", type = "", id = "" } = dataSetOne || {};
 
   console.log(dataSetOne?.children?.length, toggle);
+
   const toggleItems = () => {
     setToggle((prev) => !prev);
-
-    if (!toggle && !loadedChildren.length && dataSetOne?.children) {
-      setLoading(true);
-      setTimeout(() => {
-        setLoadedChildren(dataSetOne?.children);
-        setLoading(false);
-      }, 500);
-    }
+    // if (!toggle && !loadedChildren.length && dataSetOne?.children) {
+    //   setLoading(true);
+    //   setTimeout(() => {
+    //     setLoadedChildren(dataSetOne?.children);
+    //     setLoading(false);
+    //   }, 500);
+    // }
   };
 
+  useEffect(() => {
+    if (toggle) {
+      if (dataSetOne?.children.length) {
+        setLoading(true);
+        const timer = setTimeout(() => {
+          setLoadedChildren(dataSetOne.children);
+          setLoading(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [toggle, dataSetOne.children]);
   const addItemHandler = () => {
     setShowInput(true);
+    setAddValue("");
   };
   const closeItemHandler = () => {
     setShowInput(false);
@@ -54,8 +68,12 @@ const FileExplorerMenu = ({
   };
 
   useEffect(() => {
-    console.log("toggle", toggle);
+    console.log("toggle is", toggle);
   }, [toggle]);
+
+  // useEffect(() => {
+  //   setLoadedChildren(dataSetOne.children);
+  // }, [dataSetOne.children]);
 
   useEffect(() => {
     setEditValue(dataSetOne?.name);
@@ -130,7 +148,7 @@ const FileExplorerMenu = ({
               File
             </div>
             <div className="buttonContainer">
-              <button onClick={addItem}>Add</button>
+              <button onClick={() => addItem(id)}>Add</button>
               <button onClick={cancelItemHandler}>Clear</button>
             </div>
           </div>
@@ -154,12 +172,11 @@ const FileExplorerMenu = ({
         </>
       )}
 
-      {toggle ? (
-        loading ? (
-          <span className="loadingText">Loading...</span>
-        ) : null
-      ) : null}
-      {!loading &&
+      {toggle &&
+        (loading ? <span className="loadingText">Loading...</span> : null)}
+
+      {toggle &&
+        !loading &&
         loadedChildren?.map((childItem) => (
           <FileExplorerMenu
             key={childItem.id}
