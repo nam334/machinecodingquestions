@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import FileExplorerMenu from "./FileExplorerMenu";
 import { dataSetOne } from "../utils/data";
 import { v4 as uuidv4 } from "uuid";
@@ -8,78 +8,84 @@ const Home = () => {
   const [selectType, setSelectType] = useState("");
   const [addValue, setAddValue] = useState("");
   const [editValue, setEditValue] = useState(dataSetOne?.name);
-  useEffect(() => {
-    console.log("Original data is", fileExplorerData);
-  }, [fileExplorerData]);
 
-  const addItem = (pid) => {
-    let itemname;
-    if (selectType === "file") itemname = addValue + ".txt";
-    const item = {
-      id: uuidv4(),
-      name: selectType === "file" ? itemname : addValue,
-      type: selectType,
-    };
-    if (selectType === "directory") item.children = [];
-    //make a copy
-    const copyData = JSON.parse(JSON.stringify(fileExplorerData));
-    addToParent(copyData, pid);
-    function addToParent(node, pid) {
-      if (node.id === pid) {
-        if (!node.children) node.children = [];
-        node.children.push(item);
-        return true;
-      }
-      if (node.children) {
-        for (let child of node.children) {
-          if (child.type === "directory") {
-            if (addToParent(child, pid)) return true;
+  const addItem = useCallback(
+    (pid) => {
+      let itemname;
+      if (selectType === "file") itemname = addValue + ".txt";
+      const item = {
+        id: uuidv4(),
+        name: selectType === "file" ? itemname : addValue,
+        type: selectType,
+      };
+      if (selectType === "directory") item.children = [];
+      //make a copy
+      const copyData = JSON.parse(JSON.stringify(fileExplorerData));
+      addToParent(copyData, pid);
+      function addToParent(node, pid) {
+        if (node.id === pid) {
+          if (!node.children) node.children = [];
+          node.children.push(item);
+          return true;
+        }
+        if (node.children) {
+          for (let child of node.children) {
+            if (child.type === "directory") {
+              if (addToParent(child, pid)) return true;
+            }
           }
         }
       }
-    }
 
-    setFileExplorerData(copyData);
-  };
-  const deleteItemHandler = (id) => {
-    //check for root
-    if (dataSetOne?.id === id) {
-      setFileExplorerData(null);
-      return;
-    }
+      setFileExplorerData(copyData);
+    },
+    [addValue, fileExplorerData, selectType]
+  );
 
-    const removeData = (node) => {
-      if (!node.children) return;
-
-      node.children = node?.children?.filter((child) => child.id !== id);
-      for (const child of node.children) {
-        removeData(child);
+  const deleteItemHandler = useCallback(
+    (id) => {
+      //check for root
+      if (dataSetOne?.id === id) {
+        setFileExplorerData(null);
+        return;
       }
-    };
-    const copyData = JSON.parse(JSON.stringify(fileExplorerData));
-    removeData(copyData);
-    setFileExplorerData(copyData);
-  };
-  const editSelectHandler = (id, name) => {
-    console.log("Parent is", id, name, "value is", editValue);
 
-    //COPY THE DATA
-    const copyData = JSON.parse(JSON.stringify(fileExplorerData));
+      const removeData = (node) => {
+        if (!node.children) return;
 
-    const editName = (node) => {
-      if (node.id === id) {
-        node.name = editValue;
-        return true;
-      }
-      if (node.children) {
-        for (let child of node.children) {
-          if (editName(child)) return true;
+        node.children = node?.children?.filter((child) => child.id !== id);
+        for (const child of node.children) {
+          removeData(child);
         }
-      }
-    };
-    editName(copyData);
-    setFileExplorerData(copyData);
-  };
+      };
+      const copyData = JSON.parse(JSON.stringify(fileExplorerData));
+      removeData(copyData);
+      setFileExplorerData(copyData);
+    },
+    [fileExplorerData]
+  );
+
+  const editSelectHandler = useCallback(
+    (id) => {
+      //COPY THE DATA
+      const copyData = JSON.parse(JSON.stringify(fileExplorerData));
+      const editName = (node) => {
+        if (node.id === id) {
+          node.name = editValue;
+          return true;
+        }
+        if (node.children) {
+          for (let child of node.children) {
+            if (editName(child)) return true;
+          }
+        }
+      };
+      editName(copyData);
+      setFileExplorerData(copyData);
+    },
+    [fileExplorerData, editValue]
+  );
+
   return (
     <>
       <div className="explorer">EXPLORER</div>
