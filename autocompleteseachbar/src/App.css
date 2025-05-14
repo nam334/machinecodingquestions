@@ -1,0 +1,65 @@
+#root {
+  /* max-width: 1280px; */
+  /* margin: 0 auto;
+  padding: 2rem; */
+}
+body {
+  background-color: rgb(247, 250, 250);
+  font-family: "Lato", sans-serif;
+}
+.searchBarComponent {
+  margin: 0 30%;
+}
+.searchBarHeading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+
+  color: rgb(144, 142, 142);
+}
+
+.searchBox {
+  padding: 0.8rem;
+  width: 600px;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+
+.searchBox::placeholder {
+  font-style: italic;
+}
+.suggestionBox {
+  width: 620px;
+  height: 250px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-top: 10px;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.suggestionContainer {
+  font-family: "Lato", sans-serif;
+  padding: 0.5rem;
+  background-color: white;
+}
+
+.suggestionContainertitle {
+  cursor: pointer;
+  margin: 0.7rem 0rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.suggestionContainertitle:hover {
+  font-family: "Poppins", sans-serif;
+}
+.selectedItem:hover {
+  background-color: #f7f3f3;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.selectedItem {
+  padding: 0.2rem 0.3rem 0.2rem 0.3rem;
+  font-weight: lighter;
+}
