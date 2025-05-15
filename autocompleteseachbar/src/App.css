@@ -30,11 +30,11 @@ body {
 }
 .suggestionBox {
   width: 620px;
-  height: 250px;
+  max-height: 250px;
   border: 1px solid gray;
   border-radius: 5px;
   margin-top: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: white;
 }
 
@@ -62,4 +62,8 @@ body {
 .selectedItem {
   padding: 0.2rem 0.3rem 0.2rem 0.3rem;
   font-weight: lighter;
+}
+
+.highlightedIndex {
+  background-color: #f7f3f3;
 }

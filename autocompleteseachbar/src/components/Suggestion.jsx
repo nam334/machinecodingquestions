@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
-const Suggestion = ({ filteredData, setSearchInput, valueHandler }) => {
+const Suggestion = ({ filteredData, highlightedIndex, valueHandler }) => {
+  const highlightedRef = useRef(null);
+
+  useEffect(() => {
+    if (highlightedRef.current) {
+      highlightedRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    }
+  }, [highlightedIndex]);
+
   return (
     <div className="suggestionContainer">
-      {filteredData?.map((filteredData) => (
-        <div className="selectedItem" key={filteredData?.id}>
+      {filteredData?.map((filteredData, index) => (
+        <div
+          className={
+            highlightedIndex === index
+              ? `highlightedIndex selectedItem`
+              : `selectedItem`
+          }
+          key={filteredData?.id}
+          ref={highlightedIndex === index ? highlightedRef : null}
+        >
           <h1
             className="suggestionContainertitle"
-            onClick={(e) => valueHandler(e, filteredData?.title)}
+            onMouseDown={(e) => valueHandler(e, filteredData?.title)}
           >
             {filteredData?.title}
           </h1>

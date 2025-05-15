@@ -7,7 +7,7 @@ const SearchBarComponent = () => {
   const [data, setData] = useState(dataset);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
-  const [selectFiltered, setSelectFiltered] = useState(false);
+  const [highlightedIndex, sethighlightedIndex] = useState(-1);
 
   const changeHandler = (e) => {
     setShowSuggestions(true);
@@ -60,8 +60,27 @@ const SearchBarComponent = () => {
   }, [searchInput]);
 
   const keyDownHandler = (e) => {
+    if (e.keyCode === 13 && filteredData?.length > 0) {
+      console.log(filteredData[highlightedIndex]);
+      setSearchInput(filteredData[highlightedIndex]?.title);
+      setShowSuggestions(false);
+      setFilteredData([]);
+    }
+    if (e.keyCode === 40) {
+      if (filteredData?.length > 0)
+        sethighlightedIndex((highlightedIndex) => highlightedIndex + 1);
+    }
+    if (e.keyCode === 38) {
+      if (filteredData?.length > 0)
+        if (highlightedIndex === 0) sethighlightedIndex(0);
+        else sethighlightedIndex((highlightedIndex) => highlightedIndex - 1);
+    }
     console.log(e);
   };
+
+  useEffect(() => {
+    console.log(highlightedIndex);
+  }, [highlightedIndex]);
   return (
     <div>
       <h3 className="searchBarHeading">Find what You need 🔍</h3>
@@ -74,13 +93,13 @@ const SearchBarComponent = () => {
           onChange={(e) => changeHandler(e)}
           onKeyDown={(e) => keyDownHandler(e)}
           onFocus={() => searchInput?.length > 0 && setShowSuggestions(true)}
-          //onBlur={() => setShowSuggestions(false)}
+          onBlur={() => setShowSuggestions(false)}
         />
         {showSuggestions && (
           <div className="suggestionBox">
             <Suggestion
               filteredData={filteredData}
-              setSelectFiltered={setSelectFiltered}
+              highlightedIndex={highlightedIndex}
               valueHandler={valueHandler}
             />
           </div>
