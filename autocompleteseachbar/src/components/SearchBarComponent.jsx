@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { dataset } from "../utils/products_500_titles_desc";
+import React, { useEffect, useMemo, useState } from "react";
+import { dataset } from "../utils/products_50000_titles_desc";
 import Suggestion from "./Suggestion";
 
 const SearchBarComponent = () => {
@@ -9,35 +9,34 @@ const SearchBarComponent = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [highlightedIndex, sethighlightedIndex] = useState(-1);
 
-  const changeHandler = (e) => {
-    setShowSuggestions(true);
-
-    setSearchInput(e.target.value);
+  const changeHandler = (value) => {
+    console.log(value.length);
+    console.log("Debounced value", value);
+    if (value.length < 2) return;
+    else setShowSuggestions(true);
+    // setSearchInput(value);
   };
 
-  const valueHandler = (e, title) => {
-    // console.log("click", e);
-    // e.stopPropagation();
-    // console.log(title);
-    setShowSuggestions(false);
+  const debounceHandler = (fn, delay) => {
+    let timer = null;
+    return function (...args) {
+      if (timer) clearTimeout(timer);
 
+      timer = setTimeout(() => {
+        // fn.apply(this, args);
+        fn(...args);
+      }, delay);
+    };
+  };
+  const debounce = useMemo(() => debounceHandler(changeHandler, 500), []);
+
+  const valueHandler = (e, title) => {
+    setShowSuggestions(false);
     setSearchInput(title);
     setFilteredData([]);
   };
 
-  // useEffect(() => {
-  //   console.log("showSuggestions", showSuggestions);
-  // }, [showSuggestions]);
-
-  // useEffect(() => {
-  //   console.log(filteredData);
-  // }, [filteredData]);
-
   useEffect(() => {
-    // if (searchInput?.length > 0) {
-    //   setShowSuggestions(true);
-    // } else setShowSuggestions(false);
-
     if (searchInput?.length === 0) {
       setShowSuggestions(false);
     }
@@ -61,7 +60,6 @@ const SearchBarComponent = () => {
 
   const keyDownHandler = (e) => {
     if (e.keyCode === 13 && filteredData?.length > 0) {
-      console.log(filteredData[highlightedIndex]);
       setSearchInput(filteredData[highlightedIndex]?.title);
       setShowSuggestions(false);
       setFilteredData([]);
@@ -75,12 +73,8 @@ const SearchBarComponent = () => {
         if (highlightedIndex === 0) sethighlightedIndex(0);
         else sethighlightedIndex((highlightedIndex) => highlightedIndex - 1);
     }
-    console.log(e);
   };
 
-  useEffect(() => {
-    console.log(highlightedIndex);
-  }, [highlightedIndex]);
   return (
     <div>
       <h3 className="searchBarHeading">Find what You need 🔍</h3>
@@ -90,7 +84,11 @@ const SearchBarComponent = () => {
           placeholder="What are you looking for?"
           className="searchBox"
           value={searchInput}
-          onChange={(e) => changeHandler(e)}
+          onChange={(e) => {
+            console.log("Input typed", e.target.value);
+            setSearchInput(e.target.value);
+            debounce(e.target.value);
+          }}
           onKeyDown={(e) => keyDownHandler(e)}
           onFocus={() => searchInput?.length > 0 && setShowSuggestions(true)}
           onBlur={() => setShowSuggestions(false)}
