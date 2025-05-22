@@ -1,7 +1,18 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { dataset } from "../utils/products_50000_titles_desc";
+import { dataset } from "../utils/products_500_titles_desc";
 import Suggestion from "./Suggestion";
 
+const cachedMap = new Map();
+console.log("Mpa is", cachedMap);
+const MAX_CACHE_SIZE = 5;
+function setCache(key, value) {
+  if (cachedMap.size >= MAX_CACHE_SIZE) {
+    console.log("Cached size exceeded..");
+    const getKey = [...cachedMap.keys()];
+    delete getKey[0];
+  }
+  cachedMap.set(key, value);
+}
 const SearchBarComponent = () => {
   const [searchInput, setSearchInput] = useState("");
   const [data, setData] = useState(dataset);
@@ -10,8 +21,8 @@ const SearchBarComponent = () => {
   const [highlightedIndex, sethighlightedIndex] = useState(-1);
 
   const changeHandler = (value) => {
-    console.log(value.length);
-    console.log("Debounced value", value);
+    // console.log(value.length);
+    // console.log("Debounced value", value);
     if (value.length < 2) return;
     else setShowSuggestions(true);
     // setSearchInput(value);
@@ -40,22 +51,39 @@ const SearchBarComponent = () => {
     if (searchInput?.length === 0) {
       setShowSuggestions(false);
     }
-    const start = performance.now();
-    const filteredData = data?.filter(
-      (dataitem) =>
-        dataitem.title
-          .toLowerCase()
-          .trim()
-          .includes(searchInput.toLowerCase().trim()) ||
-        dataitem.description
-          .toLowerCase()
-          .trim()
-          .includes(searchInput.toLowerCase().trim())
-    );
-
-    setFilteredData(filteredData);
-    const end = performance.now();
-    console.log("For each keystroke, console shows", end - start, "timings");
+    if (searchInput.length < 2) {
+      setFilteredData([]);
+      return;
+    }
+    const searchCache = searchInput.toLowerCase().trim();
+    if (cachedMap.has(searchCache)) {
+      console.log(
+        "Fetching from cache",
+        searchCache,
+        cachedMap.get(searchCache)
+      );
+      setFilteredData(cachedMap.get(searchCache));
+      return;
+    } else {
+      console.log("Fetching first time..");
+      // const start = performance.now();
+      const filteredData = data?.filter(
+        (dataitem) =>
+          dataitem.title
+            .toLowerCase()
+            .trim()
+            .includes(searchInput.toLowerCase().trim()) ||
+          dataitem.description
+            .toLowerCase()
+            .trim()
+            .includes(searchInput.toLowerCase().trim())
+      );
+      setCache(searchCache, filteredData);
+      // cachedMap.set(searchCache, filteredData);
+      setFilteredData(filteredData);
+      // const end = performance.now();
+      // console.log("For each keystroke, console shows", end - start, "timings");
+    }
   }, [searchInput]);
 
   const keyDownHandler = (e) => {
@@ -85,7 +113,7 @@ const SearchBarComponent = () => {
           className="searchBox"
           value={searchInput}
           onChange={(e) => {
-            console.log("Input typed", e.target.value);
+            // console.log("Input typed", e.target.value);
             setSearchInput(e.target.value);
             debounce(e.target.value);
           }}
