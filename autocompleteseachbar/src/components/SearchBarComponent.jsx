@@ -6,28 +6,53 @@ const cachedMap = new Map();
 console.log("Mpa is", cachedMap);
 const MAX_CACHE_SIZE = 5;
 function setCache(key, value) {
-  if (cachedMap.size >= MAX_CACHE_SIZE) {
-    console.log("Cached size exceeded..");
-    const getKey = [...cachedMap.keys()];
-    delete getKey[0];
+  try {
+    if (!key || typeof key !== "string") {
+      throw new Error("Invalid cache key");
+    }
+
+    if (!Array.isArray(value)) {
+      throw new Error("Cached value must be an array");
+    }
+    if (cachedMap.size >= MAX_CACHE_SIZE) {
+      console.log("Cached size exceeded..");
+      const oldestKey = cachedMap.keys().next().value; // gets the first inserted key
+      cachedMap.delete(oldestKey); // removes it from the actual Map
+    }
+    cachedMap.set(key, value);
+  } catch (err) {
+    console.log("cache error", err);
   }
-  cachedMap.set(key, value);
 }
+
 const SearchBarComponent = () => {
   const [searchInput, setSearchInput] = useState("");
   const [data, setData] = useState(dataset);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [filteredData, setFilteredData] = useState([]);
   const [highlightedIndex, sethighlightedIndex] = useState(-1);
-
+  const [error, setError] = useState("");
   const changeHandler = (value) => {
     // console.log(value.length);
     // console.log("Debounced value", value);
     if (value.length < 2) return;
-    else setShowSuggestions(true);
+    // else {
+    //   if (error === "") setShowSuggestions(true);
+    // }
     // setSearchInput(value);
   };
+  useEffect(() => {
+    console.log("error length is", error.length);
+  }, [error]);
+  useEffect(() => {
+    if (error.length > 0) {
+      setShowSuggestions(false);
+    }
+  }, [error]);
 
+  useEffect(() => {
+    console.log("sho suggestions", showSuggestions);
+  }, [showSuggestions]);
   const debounceHandler = (fn, delay) => {
     let timer = null;
     return function (...args) {
@@ -35,7 +60,11 @@ const SearchBarComponent = () => {
 
       timer = setTimeout(() => {
         // fn.apply(this, args);
-        fn(...args);
+        try {
+          fn(...args);
+        } catch (err) {
+          console.log(err);
+        }
       }, delay);
     };
   };
@@ -48,8 +77,15 @@ const SearchBarComponent = () => {
   };
 
   useEffect(() => {
+    if (searchInput?.length > 2 && error === "") {
+      setShowSuggestions(true);
+    }
+  }, [searchInput, error]);
+
+  useEffect(() => {
     if (searchInput?.length === 0) {
       setShowSuggestions(false);
+      setError("");
     }
     if (searchInput.length < 2) {
       setFilteredData([]);
@@ -57,11 +93,7 @@ const SearchBarComponent = () => {
     }
     const searchCache = searchInput.toLowerCase().trim();
     if (cachedMap.has(searchCache)) {
-      console.log(
-        "Fetching from cache",
-        searchCache,
-        cachedMap.get(searchCache)
-      );
+      console.log("Fetching from cache", cachedMap, cachedMap.get(searchCache));
       setFilteredData(cachedMap.get(searchCache));
       return;
     } else {
@@ -78,9 +110,21 @@ const SearchBarComponent = () => {
             .trim()
             .includes(searchInput.toLowerCase().trim())
       );
-      setCache(searchCache, filteredData);
-      // cachedMap.set(searchCache, filteredData);
-      setFilteredData(filteredData);
+
+      filteredData?.sort((a, b) =>
+        a.title.toLowerCase().trim().localeCompare(b.title.toLowerCase().trim())
+      );
+
+      if (filteredData?.length == 0) {
+        console.log("no results found");
+        setError("No results found!");
+        setShowSuggestions(false);
+        setFilteredData([]);
+      } else {
+        setCache(searchCache, filteredData);
+        setFilteredData(filteredData);
+        setError("");
+      }
       // const end = performance.now();
       // console.log("For each keystroke, console shows", end - start, "timings");
     }
@@ -118,9 +162,10 @@ const SearchBarComponent = () => {
             debounce(e.target.value);
           }}
           onKeyDown={(e) => keyDownHandler(e)}
-          onFocus={() => searchInput?.length > 0 && setShowSuggestions(true)}
+          onFocus={() => searchInput?.length}
           onBlur={() => setShowSuggestions(false)}
         />
+        <p>{error}</p>
         {showSuggestions && (
           <div className="suggestionBox">
             <Suggestion
