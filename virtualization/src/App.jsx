@@ -1,52 +1,37 @@
-import { useState } from "react";
-import { AutoSizer, List } from "react-virtualized";
+import { useEffect, useState } from "react";
 import "./App.css";
+import Windowing from "./components/Windowing.jsx";
+import { useDebounce } from "./hooks/useDebounce.jsx";
 
 function App() {
-  const [data, setData] = useState([]);
-  const size = 10000;
-  const fetchData = () => {
-    setTimeout(() => {
-      const arr = new Array(size).fill(0).map((_, i) => `Item ${i + 1}`);
-      setData(arr);
-    }, 1000);
-  };
+  const [text, setText] = useState("");
+  const debouncedValue = useDebounce(text, 500);
+  console.log("Debounced value is", debouncedValue);
+  const [fetchedData, setFetchedData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(
+        `https://jsonplaceholder.typicode.com/users?username_like=${debouncedValue}`
+      );
 
-  const rowRenderer = ({ style, key, index }) => {
-    return (
-      <div
-        key={key}
-        style={{
-          ...style,
-        }}
-      >
-        {data[index]}
-      </div>
-    );
-  };
+      const value = await data.json();
+      console.log(value);
+      setFetchedData(value);
+    };
+
+    if (debouncedValue?.length) {
+      fetchData();
+    }
+  }, [debouncedValue]);
+
   return (
     <>
-      <button style={{ border: "1px solid black" }} onClick={fetchData}>
-        Generate button
-      </button>
-      {/* <div style={{ margin: "1rem", height: "500px", overflowY: "scroll" }}>
-        <div>{list && renderData()}</div>
-      </div> */}
-      {data.length > 0 && (
-        <div style={{ margin: "1rem", height: "500px" }}>
-          <AutoSizer>
-            {({ width, height }) => (
-              <List
-                width={width}
-                height={height}
-                rowCount={data?.length}
-                rowHeight={40}
-                rowRenderer={rowRenderer}
-              />
-            )}
-          </AutoSizer>
-        </div>
-      )}
+      {/* <Windowing /> */}
+      <input value={text} onChange={(e) => setText(e.target.value)} />
+      {fetchedData?.length > 0 &&
+        fetchedData?.map((fetchedData) => (
+          <h4 key={fetchedData.id}>{fetchedData.name}</h4>
+        ))}
     </>
   );
 }
