@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import FileExplorerMenu from "./FileExplorerMenu";
 import { dataSetOne } from "../utils/data";
 import { v4 as uuidv4 } from "uuid";
@@ -42,17 +42,21 @@ const Home = () => {
     [addValue, fileExplorerData, selectType]
   );
 
+  useEffect(() => {
+    console.log("fileExplorerData", fileExplorerData);
+  }, [fileExplorerData]);
+
   const deleteItemHandler = useCallback(
     (id) => {
       //check for root
-      if (dataSetOne?.id === id) {
+      if (fileExplorerData?.id === id) {
         setFileExplorerData(null);
         return;
       }
 
       const removeData = (node) => {
-        if (!node.children) return;
-
+        if (!node.children) return node;
+        console.log("node is", node.name);
         node.children = node?.children?.filter((child) => child.id !== id);
         for (const child of node.children) {
           removeData(child);
