@@ -25,7 +25,6 @@ class MyPromise {
         this.#thencbs.forEach((cb) => {
           cb(this.#value);
         });
-
         this.#thencbs = [];
       }
 
@@ -33,7 +32,6 @@ class MyPromise {
         this.#catchcbs.forEach((cb) => {
           cb(this.#value);
         });
-
         this.#catchcbs = [];
       }
     });
