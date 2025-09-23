@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi";
 import ProductCard from "./ProductCard";
+import ErrorBoundary from "./ErrorBoundary";
 
 const PAGE_SIZE = 10;
 
@@ -67,16 +68,17 @@ const Pagination = () => {
         >
           <FiChevronsRight />
         </button>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-          {fetchedData?.length
-            ? fetchedData
-                .slice(startCount, startCount + PAGE_SIZE)
-                ?.map(({ images, title }) => (
-                  <ProductCard image={images} title={title} />
-                ))
-            : "No products found"}
-        </div>
+        <ErrorBoundary>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+            {fetchedData?.length
+              ? fetchedData
+                  .slice(startCount, startCount + PAGE_SIZE)
+                  ?.map(({ images, title }) => (
+                    <ProductCard image={images} title={title} />
+                  ))
+              : "No products found"}
+          </div>
+        </ErrorBoundary>
       </div>
     </div>
   );
